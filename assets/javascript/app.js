@@ -1,25 +1,7 @@
 
 /* $( document ).ready(function() { */
-   
 
-//Globals
-var timeRemaining = 30;
-var correctGuess = 0;
-var wrongGuess = 0;
-var questionInterval;
-var firstQuestion;
-var newQuestion;
-var firstAnswer;
-var newAnswer;
-
-/* 
-Object helper functions:
-- Object.keys(objectname)
-- Object.values(objectname)
-
-*/
-
-//Question Objects
+//Question & Answer Objects --------------------------------------------------------------------
 var questionObj = {
 first: "Who masterminded the plot to kill King Joffrey?",
 second: "What is Brienne's real surname?",
@@ -46,31 +28,38 @@ ninth: ["Grey Wind", "Graham", "Ghost", "Gargamel"], /* answer: Ghost */
 tenth: ["Kardashian", "Targaryen", "Tully", "Martell"] /* answer: Targaryen */
 };
 
-
+//Global Variables --------------------------------------------------------------------
+var firstQuestion = Object.values(questionObj)[0];
+var firstAnswer = Object.values(answerObj)[0];
+var timeRemaining = 30;
+var correctGuess = 0;
+var wrongGuess = 0;
+var questionInterval;
+var newAnswer;
+var newQuestion;
 
 
 //Functions
 function start () {
-    firstQuestion = Object.values(questionObj)[0];
     $(".trivia-question").text(firstQuestion);
-    answers()
+    answersPrint(firstAnswer)
 };
 
-var answers = function () {
+
+var answersPrint = function (ans) {
     $(".trivia-answers").empty()
-    firstAnswer = Object.values(answerObj)[0];
-    for (i = 0; i < firstAnswer.length; i++){
-        a = $("<p>");
-        a.text(firstAnswer[i]);
-        $(".trivia-answers").append(a);
+    for (i = 0; i < ans.length; i++){
+      console.log(ans[i])
     }
 };
 
 
 var nextAnswer = function () {
-    var temp1 = Object.values(answerObj);
-    var answerIndex = temp1.indexOf(firstAnswer);
-
+    var temp1 = Object.values(answerObj); // Turns answer-object keys into an array of arrays
+    answerIndex = temp1.indexOf(firstAnswer); //Finds what index the first answer array is in
+    newAnswer = Object.values(answerObj)[answerIndex + 1]; //delivers the new answer index for the next question
+    answersPrint(newAnswer);
+    firstAnswer = newAnswer
 };
 
 var nextQuestion = function() {
