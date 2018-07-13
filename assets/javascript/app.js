@@ -3,17 +3,23 @@
    
 
 //Globals
-var timeRemaining = 0;
+var timeRemaining = 30;
 var correctGuess = 0;
 var wrongGuess = 0;
-var intervalId;
+var questionInterval;
+var firstQuestion;
+var newQuestion;
+var firstAnswer;
+var newAnswer;
 
+/* 
+Object helper functions:
+- Object.keys(objectname)
+- Object.values(objectname)
 
-//Arrays
-
+*/
 
 //Question Objects
-
 var questionObj = {
 first: "Who masterminded the plot to kill King Joffrey?",
 second: "What is Brienne's real surname?",
@@ -40,15 +46,41 @@ ninth: ["Grey Wind", "Graham", "Ghost", "Gargamel"], /* answer: Ghost */
 tenth: ["Kardashian", "Targaryen", "Tully", "Martell"] /* answer: Targaryen */
 };
 
-//Functions
 
-var start = function() {
+
+
+//Functions
+function start () {
+    firstQuestion = Object.values(questionObj)[0];
+    $(".trivia-question").text(firstQuestion);
+    answers()
+};
+
+var answers = function () {
+    $(".trivia-answers").empty()
+    firstAnswer = Object.values(answerObj)[0];
+    for (i = 0; i < firstAnswer.length; i++){
+        a = $("<p>");
+        a.text(firstAnswer[i]);
+        $(".trivia-answers").append(a);
+    }
+};
+
+
+var nextAnswer = function () {
+    var temp1 = Object.values(answerObj);
+    var answerIndex = temp1.indexOf(firstAnswer);
 
 };
 
 var nextQuestion = function() {
-
+    var temp = Object.values(questionObj); //Turns question-object keys into array with string-values
+    indexValue = temp.indexOf(firstQuestion); //Finds question in temp array and gives index - returns 0 at start 
+    newQuestion = Object.values(questionObj)[indexValue + 1]; //increments index by 1 for next question
+    $(".trivia-question").text(newQuestion); // prints new question on the screen
+    firstQuestion = newQuestion //Assigns new question to firstQuestion variable. This will bring up new question automatically.
 };
+
 
 
 var reset = function() {
@@ -59,6 +91,7 @@ var reset = function() {
 
 
 //Click events -- add later, will return undefined with doc.ready commented
+$("#startbtn").click(start)
 
 
 
