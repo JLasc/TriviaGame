@@ -41,7 +41,7 @@ var newQuestion;
 //Page hooks
 var triviaTimer = $(".trivia-timer");
 var triviaQuestion = $(".trivia-question");
-var triviaAnswer = $(".trivia-answer");
+var triviaAnswer = $(".trivia-answers");
 
 
 function quickkey () {
@@ -51,17 +51,17 @@ function quickkey () {
 
 //Functions
 function start () {
-    $(".trivia-question").text(firstQuestion);
+    triviaQuestion.text(firstQuestion);
     answersPrint(firstAnswer)
 };
 
 
 var answersPrint = function (ans) {
-    $(".trivia-answers").empty()
+    triviaAnswer.empty()
     for (i = 0; i < ans.length; i++){
         newLine = $("<p>")
         newButton = $("<button>").text(ans[i]).addClass("btn btn-secondary btn-lg").attr("type", "button").attr("value", ans[i]);
-        $(".trivia-answers").append(newLine, newButton);
+        triviaAnswer.append(newLine, newButton);
     }
 };
 
@@ -80,7 +80,7 @@ var nextQuestion = function() {
     var temp = Object.values(questionObj); //Turns question-object keys into array with string-values
     indexValue = temp.indexOf(firstQuestion); //Finds question in temp array and gives index - returns 0 at start 
     newQuestion = Object.values(questionObj)[indexValue + 1]; //increments index by 1 for next question
-    $(".trivia-question").text(newQuestion); // prints new question on the screen
+    triviaQuestion.text(newQuestion); // prints new question on the screen
     firstQuestion = newQuestion //Assigns new question to firstQuestion variable. This will bring up new question automatically.
 };
 
