@@ -31,7 +31,7 @@ tenth: ["Kardashian", "Targaryen", "Tully", "Martell"] /* answer: Targaryen */
 //Global Variables --------------------------------------------------------------------
 var firstQuestion = Object.values(questionObj)[0];
 var firstAnswer = Object.values(answerObj)[0];
-var timeRemaining = 30;
+var timeRemaining = 15;
 var correctGuess = 0;
 var wrongGuess = 0;
 var questionInterval;
@@ -42,6 +42,7 @@ var newQuestion;
 var triviaTimer = $(".trivia-timer");
 var triviaQuestion = $(".trivia-question");
 var triviaAnswer = $(".trivia-answers");
+var startButton = $("#startbtn");
 
 
 function quickkey () {
@@ -51,8 +52,12 @@ function quickkey () {
 
 //Functions
 function start () {
+    startButton.hide();
+    $("#startimg").hide();
     triviaQuestion.text(firstQuestion);
-    answersPrint(firstAnswer)
+    answersPrint(firstAnswer);
+    triviaTimer.text(timeRemaining);
+    questionInterval = setInterval(countdown, 1000);
 };
 
 
@@ -64,9 +69,6 @@ var answersPrint = function (ans) {
         triviaAnswer.append(newLine, newButton);
     }
 };
-
-
-
 
 var nextAnswer = function () {
     var temp1 = Object.values(answerObj); // Turns answer-object keys into an array of arrays
@@ -84,17 +86,23 @@ var nextQuestion = function() {
     firstQuestion = newQuestion //Assigns new question to firstQuestion variable. This will bring up new question automatically.
 };
 
-
-
 var reset = function() {
 
 };
+
+var countdown = function() {    
+    timeRemaining -= 1;
+    triviaTimer.text(timeRemaining);
+    if (timeRemaining == 0) {
+        clearInterval(questionInterval);
+    }
+}
 
 
 
 
 //Click events -- add later, will return undefined with doc.ready commented
-$("#startbtn").click(start);
+startButton.click(start);
 
 
 
