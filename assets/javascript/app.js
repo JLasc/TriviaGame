@@ -16,7 +16,7 @@ tenth: "Which family does this crest belong to?"
 };
 
 var answerObj = {
-first: ["Little mix", "Littlefinger", "Olenna Tyrell", "Rene Artois"], /* answer: Littlefinger */
+first: ["Little Mix", "Littlefinger", "Olenna Tyrell", "Rene Artois"], /* answer: Littlefinger */
 second: ["Tully", "Tarth", "Gibb", "Utichi"], /* answer: Tarth */
 third: ["The Unthanks", "The Unjust", "The Unsullied", "The Undertones"], /* answer: The Unsullied */
 fourth: ['"Hear me roar"', '"A Lannister always pays his debts"', '"None so fierce"', '"Never knowingly undersold"'], /* answer: Lannister always pays debts */
@@ -38,10 +38,16 @@ var questionInterval;
 var newAnswer;
 var newQuestion;
 
+//Page hooks
+var triviaTimer = $(".trivia-timer");
+var triviaQuestion = $(".trivia-question");
+var triviaAnswer = $(".trivia-answer");
+
+
 function quickkey () {
     nextAnswer();
     nextQuestion();    
-}
+};
 
 //Functions
 function start () {
@@ -53,16 +59,18 @@ function start () {
 var answersPrint = function (ans) {
     $(".trivia-answers").empty()
     for (i = 0; i < ans.length; i++){
-        newline = $("<p>")
-        newbutton = $("<button>").text(ans[i]).addClass("btn btn-secondary btn-lg btn-block").attr("type", "button");
-        $(".trivia-answers").append(newline, newbutton);
+        newLine = $("<p>")
+        newButton = $("<button>").text(ans[i]).addClass("btn btn-secondary btn-lg").attr("type", "button").attr("value", ans[i]);
+        $(".trivia-answers").append(newLine, newButton);
     }
 };
 
 
+
+
 var nextAnswer = function () {
     var temp1 = Object.values(answerObj); // Turns answer-object keys into an array of arrays
-    answerIndex = temp1.indexOf(firstAnswer); //Finds what index the first answer array is in
+    answerIndex = temp1.indexOf(firstAnswer); //Finds what index the firstAnswer-array is in - returns 0 index
     newAnswer = Object.values(answerObj)[answerIndex + 1]; //delivers the new answer index for the next question
     answersPrint(newAnswer); //runs answerPrint function on newAnswer
     firstAnswer = newAnswer // assigns firstAnswer equal to newAnswer to repeat next set of answers
@@ -86,7 +94,7 @@ var reset = function() {
 
 
 //Click events -- add later, will return undefined with doc.ready commented
-$("#startbtn").click(start)
+$("#startbtn").click(start);
 
 
 
