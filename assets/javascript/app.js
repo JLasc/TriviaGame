@@ -38,6 +38,10 @@ var questionInterval;
 var newAnswer;
 var newQuestion;
 
+function quickkey () {
+    nextAnswer();
+    nextQuestion();    
+}
 
 //Functions
 function start () {
@@ -49,7 +53,9 @@ function start () {
 var answersPrint = function (ans) {
     $(".trivia-answers").empty()
     for (i = 0; i < ans.length; i++){
-      console.log(ans[i])
+        newline = $("<p>")
+        newbutton = $("<button>").text(ans[i]).addClass("btn btn-secondary btn-lg btn-block").attr("type", "button");
+        $(".trivia-answers").append(newline, newbutton);
     }
 };
 
@@ -58,8 +64,8 @@ var nextAnswer = function () {
     var temp1 = Object.values(answerObj); // Turns answer-object keys into an array of arrays
     answerIndex = temp1.indexOf(firstAnswer); //Finds what index the first answer array is in
     newAnswer = Object.values(answerObj)[answerIndex + 1]; //delivers the new answer index for the next question
-    answersPrint(newAnswer);
-    firstAnswer = newAnswer
+    answersPrint(newAnswer); //runs answerPrint function on newAnswer
+    firstAnswer = newAnswer // assigns firstAnswer equal to newAnswer to repeat next set of answers
 };
 
 var nextQuestion = function() {
