@@ -146,7 +146,7 @@ function noAnswer() {
             triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.fifth:
-            imageMaker("./assets/images/mirri/mirri.gif");
+            imageMaker("./assets/images/mirri/mirri.jpg");
             triviaQuestion.html("The correct answer is <b>Mirri Maz Duur.</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
@@ -160,7 +160,7 @@ function noAnswer() {
             triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.seventh:
-            imageMaker("./assets/images/hushhodor/hushhodor.gif");
+            imageMaker("./assets/images/hushhodor/hodor.gif");
             triviaQuestion.html("The correct answer is <b>Bran Stark.</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
@@ -301,14 +301,14 @@ function logic() {
 
     //"Who was burned alive on Drogo's funeral pyre?"
     if (answer === 'Mirri Maz Duur') {
-        imageMaker("./assets/images/mirri/mirri.gif");
+        imageMaker("./assets/images/mirri/mirri.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
         triviaAnswer.empty();
     } else if ((answer !== "Mirri Maz Duur") && (questionCheck === questionObj.fifth)) {
-        imageMaker("./assets/images/mirri/mirri.gif");
+        imageMaker("./assets/images/mirri/mirri.jpg");
         triviaQuestion.html("The correct answer is <b>Mirri Maz Duur.</b>");
         setTimeout(triviaNext, 3000);
         clearInterval(questionInterval);
@@ -337,14 +337,14 @@ function logic() {
     //"Who said, 'Hush, Hodor! No more Hodoring!"
 
     if (answer === "Bran Stark") {
-        imageMaker("./assets/images/hushhodor/hushhodor.gif");
+        imageMaker("./assets/images/hushhodor/hodor.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
         triviaAnswer.empty();
     } else if ((answer !== "Bran Stark") && (questionCheck === questionObj.seventh)) {
-        imageMaker("./assets/images/hushhodor/hushhodor.gif");
+        imageMaker("./assets/images/hushhodor/hodor.gif");
         triviaQuestion.html("The correct answer is <b>Bran Stark.</b>");
         setTimeout(triviaNext, 3000);
         clearInterval(questionInterval);
