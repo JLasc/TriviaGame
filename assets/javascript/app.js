@@ -49,7 +49,7 @@ var winLose = $("#win-lose");
 
 //Functions --------------------------------------------------------------------
 function triviaNext () {
-    timeRemaining = 16; // 16 accounts for the 1 seconds delay in showing.
+    timeRemaining = 16; // reset to 16 which accounts for the 1 seconds delay in displaying.
     nextAnswer();
     nextQuestion();
     imageHolder.empty();
@@ -101,6 +101,62 @@ var imageMaker = function(a) {
     imageHolder.append(newImg);
 };
 
+   function noAnswer () {
+    currentQuestion = triviaQuestion.text();
+    switch (currentQuestion){
+        case questionObj.first: 
+        imageMaker("./assets/images/littlefinger/littlefinger.jpg");
+        triviaQuestion.html("The correct answer is <b>Littlefinger</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.second:
+        imageMaker("./assets/images/tarth/brienne.jpg");
+        triviaQuestion.html("The correct answer is <b>Tarth!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.third:
+        imageMaker("./assets/images/unsullied/unsullied.gif");
+        triviaQuestion.html("The correct answer is <b>The Unsullied!</b>");
+        setTimeout(triviaNext, 3000);
+        break; 
+        case questionObj.fourth:
+        imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
+        triviaQuestion.html("The correct answer is <b>'A Lannister always pays his debts'!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.fifth:
+        imageMaker("./assets/images/mirri/mirri.gif");
+        triviaQuestion.html("The correct answer is <b>Mirri Maz Duur!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.sixth:
+        imageMaker("./assets/images/mancerader/mance.jpg");
+        triviaQuestion.html("The correct answer is <b>Mance Rayder!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.seventh:
+        imageMaker("./assets/images/hushhodor/hushhodor.gif");
+        triviaQuestion.html("The correct answer is <b>Bran Stark!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.eigth:
+        imageMaker("./assets/images/queenthorns/olenna.jpg");
+        triviaQuestion.html("The correct answer is <b>Olenna Tyrell!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.ninth:
+        imageMaker("./assets/images/jondirewolf/ghost.gif");
+        triviaQuestion.html("The correct answer is <b>Ghost!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+        case questionObj.tenth:
+        imageMaker("./assets/images/targaryen/dany.jpg");
+        triviaQuestion.html("The correct answer is <b>Targaryen!</b>");
+        setTimeout(triviaNext, 3000);
+        break;
+    }
+}
+
 var countdown = function() {  
     timeRemaining -= 1;
     triviaTimer.text(timeRemaining);  
@@ -110,41 +166,37 @@ var countdown = function() {
     }
 }
 
-var noAnswer = function() {
-    noAnswer = triviaQuestion.text();
-    if (noAnswer === questionObj.first){
-        console.log("potato")
-    }
-}
+
 
 //Click events & Logic  --------------------------------------------------------------------
 startButton.click(start)
 
 function logic() {
 
-    var answer = ($(this).attr("value"))
+    var answer = ($(this).attr("value"));
+    var questionCheck = triviaQuestion.text();
 
     //Who materminded the plot to kill King Joffrey?
     if (answer === "Littlefinger") {
         imageMaker("./assets/images/littlefinger/littlefinger.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
-        clearInterval(questionInterval)
+        triviaTimer.empty();
+        clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== "Littlefinger") && (questionCheck === questionObj.first)) {
         imageMaker("./assets/images/littlefinger/littlefinger.jpg");
         triviaQuestion.html("The correct answer is <b>Littlefinger</b>");
         setTimeout(triviaNext, 3000);
     };
 
-    //"What is Brienne's real surname?"
+     //"What is Brienne's real surname?"
     if (answer === "Tarth") {
         imageMaker("./assets/images/tarth/brienne.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
-        clearInterval(questionInterval)
+        triviaTimer.empty();
+        clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !=="Tarth")  && (questionCheck === questionObj.second)) {
         imageMaker("./assets/images/tarth/brienne.jpg");
         triviaQuestion.html("The correct answer is <b>Tarth!</b>");
         setTimeout(triviaNext, 3000);
@@ -154,10 +206,10 @@ function logic() {
     if (answer === "The Unsullied") {
         imageMaker("./assets/images/unsullied/unsullied.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
-        clearInterval(questionInterval)
+        triviaTimer.empty();
+        clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== "The Unsullied") && (questionCheck === questionObj.third)) {
         imageMaker("./assets/images/unsullied/unsullied.gif");
         triviaQuestion.html("The correct answer is <b>The Unsullied!</b>");
         setTimeout(triviaNext, 3000);
@@ -167,10 +219,10 @@ function logic() {
     if (answer === '"A Lannister always pays his debts"') {
         imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
-        clearInterval(questionInterval)
+        triviaTimer.empty();
+        clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== '"A Lannister always pays his debts"') && (questionCheck === questionObj.fourth)) {
         imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
         triviaQuestion.html("The correct answer is <b>'A Lannister always pays his debts'!</b>");
         setTimeout(triviaNext, 3000);
@@ -183,21 +235,21 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== "Mirri Maz Duur") && (questionCheck === questionObj.fifth)) {
         imageMaker("./assets/images/mirri/mirri.gif");
         triviaQuestion.html("The correct answer is <b>Mirri Maz Duur!</b>");
         setTimeout(triviaNext, 3000);
     };
 
     //"Who said, 'Of all the ways to kill you, poison would be the last'?"
-    if (answer === "Mance Raydar") {
+    if (answer === "Mance Rayder") {
         imageMaker("./assets/images/mancerayder/mance.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
-    } else {
-        imageMaker("./assets/images/mancerader/mance.jpg");
+    } else if ((answer !== "Mance Rayder") && (questionCheck === questionObj.sixth)) {
+        imageMaker("./assets/images/mancerayder/mance.jpg");
         triviaQuestion.html("The correct answer is <b>Mance Rayder!</b>");
         setTimeout(triviaNext, 3000);
     };
@@ -210,7 +262,7 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== "Bran Stark") && (questionCheck === questionObj.seventh)) {
         imageMaker("./assets/images/hushhodor/hushhodor.gif");
         triviaQuestion.html("The correct answer is <b>Bran Stark!</b>");
         setTimeout(triviaNext, 3000);
@@ -223,23 +275,22 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== "Olenna Tyrell") && (questionCheck === questionObj.eigth)) {
         imageMaker("./assets/images/queenthorns/olenna.jpg");
         triviaQuestion.html("The correct answer is <b>Olenna Tyrell!</b>");
         setTimeout(triviaNext, 3000);
     };
 
-
     //"What is the name of Jon Snow's Direwolf?"
-    if (answer === "Olenna Tyrell") {
-        imageMaker("./assets/images/queenthorns/olenna.jpg");
+    if (answer === "Ghost") {
+        imageMaker("./assets/images/jondirewolf/ghost.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
-    } else {
-        imageMaker("./assets/images/queenthorns/olenna.jpg");
-        triviaQuestion.html("The correct answer is <b>Olenna Tyrell!</b>");
+    } else if ((answer !== "Ghost") && (questionCheck === questionObj.ninth)) {
+        imageMaker("./assets/images/jondirewolf/ghost.gif");
+        triviaQuestion.html("The correct answer is <b>Ghost!</b>");
         setTimeout(triviaNext, 3000);
     };
 
@@ -250,14 +301,12 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
-    } else {
+    } else if ((answer !== "Targaryen") && (questionCheck === questionObj.tenth)) {
         imageMaker("./assets/images/targaryen/dany.jpg");
         triviaQuestion.html("The correct answer is <b>Targaryen!</b>");
         setTimeout(triviaNext, 3000);
-    };
-
-
-}
+    }; 
+} 
 
 
 /* });  */
