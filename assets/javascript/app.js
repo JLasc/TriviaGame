@@ -117,7 +117,7 @@ function noAnswer() {
     triviaAnswer.empty();
     switch (currentQuestion) {
         case questionObj.first:
-            imageMaker("./assets/images/littlefinger/littlefinger.jpg");
+            imageMaker("./assets/images/littlefinger/littlefinger.JPG");
             triviaQuestion.html("The correct answer is <b>Littlefinger.</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
@@ -233,14 +233,14 @@ function logic() {
     //Who materminded the plot to kill King Joffrey?
     if (answer === "Littlefinger") {
         triviaAnswer.empty();
-        imageMaker("./assets/images/littlefinger/littlefinger.jpg");
+        imageMaker("./assets/images/littlefinger/littlefinger.JPG");
         triviaQuestion.html("<b>You guessed correctly!</b>");
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
     } else if ((answer !== "Littlefinger") && (questionCheck === questionObj.first)) {
         triviaAnswer.empty();
-        imageMaker("./assets/images/littlefinger/littlefinger.jpg");
+        imageMaker("./assets/images/littlefinger/littlefinger.JPG");
         triviaQuestion.html("The correct answer is <b>Littlefinger.</b>");
         setTimeout(triviaNext, 3000);
         clearInterval(questionInterval);

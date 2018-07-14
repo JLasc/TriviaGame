@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
 @font-face {
     font-family: thronesFont;
-    src: url(Game-of-Thrones.ttf);
+    src: url(fonts/Game-of-Thrones.ttf);
 }
 
 .image-size {
