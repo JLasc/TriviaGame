@@ -1,31 +1,90 @@
-.image-size {
-    width: 350px;
-    height: 350px;
-}
-
-div.conatiner{
-    z-index: 1;
-    
-
-}
-
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
 @font-face {
     font-family: thronesFont;
     src: url(Game-of-Thrones.ttf);
 }
 
+.image-size {
+    width: 300px;
+    height: 350px;
+}
+
+div.conatiner{
+    z-index: 1;
+
+    width: 450px;
+}
+
+
+.jumbobg {
+    background-color: black !important;
+    opacity: 0.75;
+    
+}
+
+img {
+    padding-top: 5px;
+}
+
+
+.child1 { 
+    position:absolute; 
+    width:200px; 
+    height:200px; 
+    z-index:2;
+    
+}
+
+.opacity {
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    right: 2px; 
+    z-index:-1; 
+    background-color: black;
+    opacity: 0.75;
+}
+
+
 h1 {
     font-family: thronesFont !important;
 }
 
+h1, .trivia-question, .trivia-answers, .trivia-timer, .startgame {
+    color: white !important;
+}
 
+
+.parent {
+    position: relative;
+    z-index: 1;
+  }
+
+.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: inherit;
+  }
+
+div.trivia-question, div.trivia-timer {
+    margin: 5px;
+    font-family: 'Julius Sans One', sans-serif !important;
+    font-size: 24px;
+}
+
+div.trivia-answers {
+    font-family: 'Julius Sans One', sans-serif !important;
+    font-size: 10px;
+}
 
 
 /*  This starts the particle CSS - this was just copy and paste */
 /* ---- reset ---- */
 body {
     margin: 0;
-    font-family: thronesFont !important;
+    color: white;
 
   }
   canvas {
