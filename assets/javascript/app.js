@@ -130,7 +130,7 @@ var imageMaker = function(a) {
         setTimeout(triviaNext, 3000);
         break;
         case questionObj.sixth:
-        imageMaker("./assets/images/mancerader/mance.jpg");
+        imageMaker("./assets/images/mancerayder/mance.jpg");
         triviaQuestion.html("The correct answer is <b>Mance Rayder!</b>");
         setTimeout(triviaNext, 3000);
         break;
