@@ -209,6 +209,7 @@ function showScore() {
     firstQuestion = Object.values(questionObj)[0];
     firstAnswer = Object.values(answerObj)[0];
     timeRemaining = 10;
+    clearInterval(questionInterval)
 
 
     score =
@@ -395,6 +396,7 @@ function logic() {
         correctGuess += 1;
         triviaAnswer.empty();
         showScore();
+
     } else if ((answer !== "Targaryen") && (questionCheck === questionObj.tenth)) {
         imageMaker("./assets/images/targaryen/dany.jpg");
         triviaQuestion.html("The correct answer is <b>Targaryen.</b>");
