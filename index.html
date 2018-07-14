@@ -14,42 +14,41 @@
 
 <body>
     <div id="particles-js"></div> <!-- Particle background -->
-    <div class="container">
+    <div class="test">
+    <div class="container parent child">
 
 
         <!-- Title row -->
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4 text-center" style="background-color:black; color: white;"><h1>Game of Thrones Trivia</h1></div>
+            <div class="jumbotron jumbobg text-white"><h1>Game of Thrones Trivia</h1></div>
             <div class="col-md-4"></div>
         </div>
 
-
         <!-- Start Game -->
-        <div class="row">
+        <div class="row parent">
             <div class="col-md-12 text-center">
+                <div class="opacity"></div>
                 <div id="image-holder">
                     <img src="assets/images/theme/nightking.jpg" />
                     <!-- Note: adjust width and height -->
                 </div>
+                <div id="child1">
                 <br>
-                <button id="startbtn" class="btn btn-primary btn-lg">Start Trivia</button>
-                <!-- Note: style button, add hover effect -->
+                <button id="startbtn" class="btn btn-info btn-lg">Start Trivia</button>
+                <br>
+                <div class="trivia-question"><span style="color: red;">(Spoiler Warning)</span></div>
+                <div class="trivia-answers">Particles Credit: <a href="https://github.com/VincentGarreau/particles.js/">Vincent Garreau</a></div>
+                <br>
+                <div class="trivia-timer text-center"></div>
+                </div>
             </div>
-
-            <!-- Trivia  -->
-            <div class="row text-center">
-                <div class="trivia-question"></div>
-                <!-- Will hold the questions -->
-                <div class="trivia-answers"></div>
-                <!-- Will hold the answers -->
-            </div>
-            <br>
-            <div class="trivia-timer text-center"></div>
-            <!-- Will hold time-remaining -->
         </div>
 
-        <!-- Container end -->
+            
+    </div><!-- Container end -->
+
+        
     
         <!--  JS -->
         <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
