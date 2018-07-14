@@ -44,6 +44,7 @@ var firstAnswer = Object.values(answerObj)[0];
 var timeRemaining = 15;
 var correctGuess = 0;
 var wrongGuess = 0;
+var nullAnswer = 0;
 var questionInterval;
 var newAnswer;
 var newQuestion;
@@ -118,51 +119,61 @@ function noAnswer() {
             imageMaker("./assets/images/littlefinger/littlefinger.jpg");
             triviaQuestion.html("The correct answer is <b>Littlefinger</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.second:
             imageMaker("./assets/images/tarth/brienne.jpg");
             triviaQuestion.html("The correct answer is <b>Tarth!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.third:
             imageMaker("./assets/images/unsullied/unsullied.gif");
             triviaQuestion.html("The correct answer is <b>The Unsullied!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.fourth:
             imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
             triviaQuestion.html("The correct answer is <b>'A Lannister always pays his debts'!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.fifth:
             imageMaker("./assets/images/mirri/mirri.gif");
             triviaQuestion.html("The correct answer is <b>Mirri Maz Duur!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.sixth:
             imageMaker("./assets/images/mancerayder/mance.jpg");
             triviaQuestion.html("The correct answer is <b>Mance Rayder!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.seventh:
             imageMaker("./assets/images/hushhodor/hushhodor.gif");
             triviaQuestion.html("The correct answer is <b>Bran Stark!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.eigth:
             imageMaker("./assets/images/queenthorns/olenna.jpg");
             triviaQuestion.html("The correct answer is <b>Olenna Tyrell!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.ninth:
             imageMaker("./assets/images/jondirewolf/ghost.gif");
             triviaQuestion.html("The correct answer is <b>Ghost!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
         case questionObj.tenth:
             imageMaker("./assets/images/targaryen/dany.jpg");
             triviaQuestion.html("The correct answer is <b>Targaryen!</b>");
             setTimeout(triviaNext, 3000);
+            nullAnswer += 1;
             break;
     }
 }
@@ -186,6 +197,21 @@ function logic() {
     var answer = ($(this).attr("value"));
     var questionCheck = triviaQuestion.text();
 
+    function showScore() {
+        triviaTimer.empty();
+        triviaQuestion.empty();
+        triviaAnswer.empty();
+
+        score = 
+        "Correct Answers: " + correctGuess + 
+        "<p>Wrong Answers: " + wrongGuess + "</p>" +
+        "<p>No Answer: " + nullAnswer + "</p>";
+        imageHolder.html(score)
+
+        startButton.show()
+
+    }
+
     //Who materminded the plot to kill King Joffrey?
     if (answer === "Littlefinger") {
         imageMaker("./assets/images/littlefinger/littlefinger.jpg");
@@ -193,10 +219,12 @@ function logic() {
         triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Littlefinger") && (questionCheck === questionObj.first)) {
         imageMaker("./assets/images/littlefinger/littlefinger.jpg");
         triviaQuestion.html("The correct answer is <b>Littlefinger</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"What is Brienne's real surname?"
@@ -206,10 +234,12 @@ function logic() {
         triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Tarth") && (questionCheck === questionObj.second)) {
         imageMaker("./assets/images/tarth/brienne.jpg");
         triviaQuestion.html("The correct answer is <b>Tarth!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"Grey Worm is the leader of which group?"
@@ -219,10 +249,12 @@ function logic() {
         triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "The Unsullied") && (questionCheck === questionObj.third)) {
         imageMaker("./assets/images/unsullied/unsullied.gif");
         triviaQuestion.html("The correct answer is <b>The Unsullied!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"What is the official Lannister family motto?"
@@ -232,10 +264,12 @@ function logic() {
         triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== '"A Lannister always pays his debts"') && (questionCheck === questionObj.fourth)) {
         imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
         triviaQuestion.html("The correct answer is <b>'A Lannister always pays his debts'!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"Who was burned alive on Drogo's funeral pyre?"
@@ -245,10 +279,12 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Mirri Maz Duur") && (questionCheck === questionObj.fifth)) {
         imageMaker("./assets/images/mirri/mirri.gif");
         triviaQuestion.html("The correct answer is <b>Mirri Maz Duur!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"Who said, 'Of all the ways to kill you, poison would be the last'?"
@@ -258,10 +294,12 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Mance Rayder") && (questionCheck === questionObj.sixth)) {
         imageMaker("./assets/images/mancerayder/mance.jpg");
         triviaQuestion.html("The correct answer is <b>Mance Rayder!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
 
@@ -272,10 +310,12 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Bran Stark") && (questionCheck === questionObj.seventh)) {
         imageMaker("./assets/images/hushhodor/hushhodor.gif");
         triviaQuestion.html("The correct answer is <b>Bran Stark!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"How is 'The Queen of Thorns' more commonly known?"
@@ -285,10 +325,12 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Olenna Tyrell") && (questionCheck === questionObj.eigth)) {
         imageMaker("./assets/images/queenthorns/olenna.jpg");
         triviaQuestion.html("The correct answer is <b>Olenna Tyrell!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"What is the name of Jon Snow's Direwolf?"
@@ -298,10 +340,12 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
     } else if ((answer !== "Ghost") && (questionCheck === questionObj.ninth)) {
         imageMaker("./assets/images/jondirewolf/ghost.gif");
         triviaQuestion.html("The correct answer is <b>Ghost!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
     };
 
     //"Which family does this crest belong to?"
@@ -311,11 +355,19 @@ function logic() {
         triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
+        correctGuess += 1;
+        showScore();
     } else if ((answer !== "Targaryen") && (questionCheck === questionObj.tenth)) {
         imageMaker("./assets/images/targaryen/dany.jpg");
         triviaQuestion.html("The correct answer is <b>Targaryen!</b>");
         setTimeout(triviaNext, 3000);
+        wrongGuess += 1;
+        showScore();
     };
+
+
 }
+
+
 
 /* });  */
