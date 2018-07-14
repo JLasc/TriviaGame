@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+/* $( document ).ready(function() { */
 
 //Question & Answer Objects --------------------------------------------------------------------
 var questionObj = {
@@ -11,7 +11,7 @@ var questionObj = {
     seventh: "Who said, 'Hush, Hodor! No more Hodoring!",
     eigth: "How is 'The Queen of Thorns' more commonly known?",
     ninth: "What is the name of Jon Snow's Direwolf?",
-    tenth: "Which family does this crest belong to?"
+    tenth: "Which family does the dragons crest belong to?"
 };
 
 var answerObj = {
@@ -40,6 +40,7 @@ var answerObj = {
 //Global Variables --------------------------------------------------------------------
 var firstQuestion = Object.values(questionObj)[0];
 var firstAnswer = Object.values(answerObj)[0];
+var firstAnswerRan = firstAnswer.sort(function(a, b){return 0.5 - Math.random()});
 var timeRemaining = 10;
 var correctGuess = 0;
 var wrongGuess = 0;
@@ -49,14 +50,12 @@ var newAnswer;
 var newQuestion;
 
 
-
 //Page hooks --------------------------------------------------------------------
 var triviaTimer = $(".trivia-timer");
 var triviaQuestion = $(".trivia-question");
 var triviaAnswer = $(".trivia-answers");
 var startButton = $("#startbtn");
 var imageHolder = $("#image-holder");
-var winLose = $("#win-lose");
 
 //Functions --------------------------------------------------------------------
 function triviaNext() {
@@ -73,7 +72,7 @@ function start() {
     imageHolder.empty();
     startButton.slideUp();
     triviaQuestion.text(firstQuestion);
-    answersPrint(firstAnswer);
+    answersPrint(firstAnswerRan);
     triviaTimer.text(timeRemaining);
     questionInterval = setInterval(countdown, 1000);
     $(".answerbtn").click(logic);
@@ -93,7 +92,7 @@ var nextAnswer = function () {
     var temp1 = Object.values(answerObj); // Turns answer-object keys into an array of arrays
     answerIndex = temp1.indexOf(firstAnswer); //Finds what index the firstAnswer-array is in - returns 0 index
     newAnswer = Object.values(answerObj)[answerIndex + 1]; //adds +1 for the new answer index for the next question
-    answersPrint(newAnswer); //runs answerPrint function on newAnswer
+    answersPrint(newAnswer.sort(function(a, b){return 0.5 - Math.random()})); //runs answerPrint function on newAnswer
     firstAnswer = newAnswer // assigns firstAnswer equal to newAnswer to repeat next set of answers
 };
 
@@ -184,7 +183,6 @@ function noAnswer() {
         case questionObj.tenth:
             imageMaker("./assets/images/targaryen/dany.jpg");
             triviaQuestion.html("The correct answer is <b>Targaryen.</b>");
-            setTimeout(triviaNext, 3000);
             nullAnswer += 1;
             triviaTimer.html("<b>Time's up!</b>");
             showScore()
@@ -407,10 +405,8 @@ function logic() {
     };
 
 }
-
-
   
-}); 
+/* });  */
 
 
 /* This starts the particle JS - this was copy and paste */
