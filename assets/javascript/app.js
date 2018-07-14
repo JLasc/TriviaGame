@@ -64,6 +64,7 @@ function triviaNext() {
     nextAnswer();
     nextQuestion();
     imageHolder.empty();
+    triviaTimer.empty();
     $(".answerbtn").click(logic)
 };
 
@@ -120,60 +121,70 @@ function noAnswer() {
             triviaQuestion.html("The correct answer is <b>Littlefinger</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.second:
             imageMaker("./assets/images/tarth/brienne.jpg");
             triviaQuestion.html("The correct answer is <b>Tarth!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.third:
             imageMaker("./assets/images/unsullied/unsullied.gif");
             triviaQuestion.html("The correct answer is <b>The Unsullied!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.fourth:
             imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
             triviaQuestion.html("The correct answer is <b>'A Lannister always pays his debts'!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.fifth:
             imageMaker("./assets/images/mirri/mirri.gif");
             triviaQuestion.html("The correct answer is <b>Mirri Maz Duur!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.sixth:
             imageMaker("./assets/images/mancerayder/mance.jpg");
             triviaQuestion.html("The correct answer is <b>Mance Rayder!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.seventh:
             imageMaker("./assets/images/hushhodor/hushhodor.gif");
             triviaQuestion.html("The correct answer is <b>Bran Stark!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.eigth:
             imageMaker("./assets/images/queenthorns/olenna.jpg");
             triviaQuestion.html("The correct answer is <b>Olenna Tyrell!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.ninth:
             imageMaker("./assets/images/jondirewolf/ghost.gif");
             triviaQuestion.html("The correct answer is <b>Ghost!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
         case questionObj.tenth:
             imageMaker("./assets/images/targaryen/dany.jpg");
             triviaQuestion.html("The correct answer is <b>Targaryen!</b>");
             setTimeout(triviaNext, 3000);
             nullAnswer += 1;
+            triviaTimer.html("<b>Time's up!</b>");
             break;
     }
 }
@@ -204,19 +215,17 @@ function logic() {
 
         score = 
         "Correct Answers: " + correctGuess + 
-        "<p>Wrong Answers: " + wrongGuess + "</p>" +
-        "<p>No Answer: " + nullAnswer + "</p>";
+        "<p>Wrong Answers: " + wrongGuess  +
+        "No Answer: " + nullAnswer;
         imageHolder.html(score)
 
-        startButton.show()
-
+        startButton.fadeIn('slow');
     }
 
     //Who materminded the plot to kill King Joffrey?
     if (answer === "Littlefinger") {
         imageMaker("./assets/images/littlefinger/littlefinger.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -231,7 +240,6 @@ function logic() {
     if (answer === "Tarth") {
         imageMaker("./assets/images/tarth/brienne.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -246,7 +254,6 @@ function logic() {
     if (answer === "The Unsullied") {
         imageMaker("./assets/images/unsullied/unsullied.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -261,7 +268,6 @@ function logic() {
     if (answer === '"A Lannister always pays his debts"') {
         imageMaker("./assets/images/lannistermotto/lannisterdebt.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty();
         clearInterval(questionInterval);
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -276,7 +282,6 @@ function logic() {
     if (answer === 'Mirri Maz Duur') {
         imageMaker("./assets/images/mirri/mirri.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -291,7 +296,6 @@ function logic() {
     if (answer === "Mance Rayder") {
         imageMaker("./assets/images/mancerayder/mance.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -307,7 +311,6 @@ function logic() {
     if (answer === "Bran Stark") {
         imageMaker("./assets/images/hushhodor/hushhodor.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -322,7 +325,6 @@ function logic() {
     if (answer === "Olenna Tyrell") {
         imageMaker("./assets/images/queenthorns/olenna.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -337,7 +339,6 @@ function logic() {
     if (answer === "Ghost") {
         imageMaker("./assets/images/jondirewolf/ghost.gif");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
         clearInterval(questionInterval)
         setTimeout(triviaNext, 3000);
         correctGuess += 1;
@@ -352,15 +353,12 @@ function logic() {
     if (answer === "Targaryen") {
         imageMaker("./assets/images/targaryen/dany.jpg");
         triviaQuestion.html("<b>You guessed correctly!</b>");
-        triviaTimer.empty()
         clearInterval(questionInterval)
-        setTimeout(triviaNext, 3000);
         correctGuess += 1;
         showScore();
     } else if ((answer !== "Targaryen") && (questionCheck === questionObj.tenth)) {
         imageMaker("./assets/images/targaryen/dany.jpg");
         triviaQuestion.html("The correct answer is <b>Targaryen!</b>");
-        setTimeout(triviaNext, 3000);
         wrongGuess += 1;
         showScore();
     };
@@ -368,6 +366,17 @@ function logic() {
 
 }
 
+
+/* 
+
+Fix:
+- multiple clicks on answer buttons break game - destroys counters
+- Mance question: if wrong guess, shows Mance and Littlefinger
+- Get "play again" button to show at end of game - create a new button altogether
+- Fix scoreboard <p> tags to show properly for unanswered guess
+
+
+*/
 
 
 /* });  */
