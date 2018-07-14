@@ -224,7 +224,7 @@ function showScore() {
 
 //Click events & Logic  --------------------------------------------------------------------
 startButton.click(start)
-startButton.tap(start)
+
 
 function logic() {
 
