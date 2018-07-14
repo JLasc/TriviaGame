@@ -9,6 +9,12 @@
     height: 350px;
 }
 
+.mainpic {
+    height: 350px;
+    width: 522px;
+    opacity: 0.55;
+}
+
 div.conatiner{
     z-index: 1;
 
@@ -42,7 +48,7 @@ img {
     right: 2px; 
     z-index:-1; 
     background-color: black;
-    opacity: 0.75;
+    opacity: 0.95;
 }
 
 
