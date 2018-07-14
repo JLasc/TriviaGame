@@ -17,7 +17,6 @@
 
 div.conatiner{
     z-index: 1;
-
     width: 450px;
 }
 
@@ -52,11 +51,12 @@ img {
 }
 
 
-h1 {
+#title {
     font-family: thronesFont !important;
+    font-size: 30px;
 }
 
-h1, .trivia-question, .trivia-answers, .trivia-timer, .startgame {
+#title, .trivia-question, .trivia-answers, .trivia-timer, .startgame {
     color: white !important;
 }
 
