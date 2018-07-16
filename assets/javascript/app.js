@@ -200,7 +200,7 @@ var countdown = function () {
 }
 
 function showScore() {
-    startButton.show();
+    startButton.text("Play again").show();
     triviaTimer.empty();
     triviaQuestion.empty();
     triviaAnswer.empty();
